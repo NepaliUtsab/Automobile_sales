@@ -14,7 +14,17 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EMAIL_HOST = 'smtp.email-host-provider-domain.com'
+EMAIL_HOST_USER = 'yourusername@youremail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Your Name <you@email.com>'
 
+ADMINS = (
+    ('You', 'you@email.com'),
+)
+MANAGERS = ADMINS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -25,7 +35,7 @@ SECRET_KEY = '@f)w!6-pnmh5=mmx)=t159+o9)cwrfw57-el17()%vgk0dj9+k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.108']
+ALLOWED_HOSTS = ['https://automobile-sales.herokuapp.com/','.mydomain.com']
 
 
 # Application definition
@@ -85,6 +95,9 @@ DATABASES = {
         'PASSWORD': 'Sherlocked07&08',
     }
 }
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 # Internationalization

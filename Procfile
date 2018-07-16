@@ -1,1 +1,1 @@
-web: gunicorn testapi.wsgi
+web: gunicorn Automobile_sales.wsgi
